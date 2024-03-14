@@ -16,8 +16,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('love_sandwiches')
 
-sales = SHEET.worksheet('sales')
+def get_sales_data():
+    """"
+    Get data from the users input
+    """
+    print("Please enter data from the last sales day")
+    print("Data should be 6 numbers serperated by ,")
+    print("Example: 1,2,3,4,5,6")
 
-data = sales.get_all_values()
+    data_str = input("Enter your sales data here: ")
+    print(f"The data provided is {data_str}")
 
-print(data)
+get_sales_data()
